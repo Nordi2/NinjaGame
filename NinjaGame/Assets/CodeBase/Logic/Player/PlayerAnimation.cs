@@ -9,16 +9,14 @@ namespace Assets.CodeBase.Logic.Player
         private static readonly int _attack = Animator.StringToHash("Attack");
 
         private Animator _animator;
-        private void Awake()
-        {
+        private void Awake() =>
             _animator = GetComponent<Animator>();
-        }
         public void Move(float xVelocity, float zVelocity)
         {
             _animator.SetFloat(_xVelocity, xVelocity, 0.1f, Time.deltaTime);
             _animator.SetFloat(_zVelocity, zVelocity, 0.1f, Time.deltaTime);
         }
-        public void Attack() =>
-            _animator.SetTrigger(_attack);
+        public void Attack(bool attackClick) =>
+            _animator.SetBool(_attack, attackClick );
     }
 }

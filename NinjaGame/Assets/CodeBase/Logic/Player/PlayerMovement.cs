@@ -1,6 +1,4 @@
-using Assets.CodeBase.Logic.Enemy;
 using Assets.CodeBase.Service;
-using System;
 using UnityEngine;
 
 namespace Assets.CodeBase.Logic.Player
@@ -12,7 +10,6 @@ namespace Assets.CodeBase.Logic.Player
         public InputService _inputService;//изменить 
         private CharacterController _characterController;
         private PlayerAnimation _animation;
-        private TriggerObserver _triggerObserver;
 
         private float _verticalVelocity;
         private Vector3 _moveDirection;
@@ -21,13 +18,7 @@ namespace Assets.CodeBase.Logic.Player
         {
             _characterController = GetComponent<CharacterController>();
             _animation = GetComponentInChildren<PlayerAnimation>();
-            _triggerObserver = GetComponent<TriggerObserver>();
         }
-        private void Start()
-        {
-            _triggerObserver.TriggerStay += OnTriggerStay;
-        }
-
         private void Update()
         {
             if (!_triggreCalled)
@@ -64,13 +55,6 @@ namespace Assets.CodeBase.Logic.Player
             else
             {
                 _moveDirection.y -= 0.5f;
-            }
-        }
-        private void OnTriggerStay(Collider obj)
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                _animation.Attack();
             }
         }
         public void AnimationTriggerOn() => _triggreCalled = true;
