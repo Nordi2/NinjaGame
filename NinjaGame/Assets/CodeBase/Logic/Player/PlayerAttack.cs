@@ -2,16 +2,22 @@ using Assets.CodeBase.Logic.Enemy;
 using Assets.CodeBase.Service;
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.CodeBase.Logic.Player
 {
     public class PlayerAttack : MonoBehaviour
     {
-        [SerializeField] private InputService _inputService;
+        [SerializeField] private IInputService _inputService;
 
         private TriggerObserver _triggerObserver;
         private PlayerAnimation _animation;
         public event Action OnAttack;
+        [Inject]
+        public void Construct(IInputService inputService) 
+        {
+            _inputService = inputService;
+        }
         private void Awake()
         {
             _triggerObserver = GetComponent<TriggerObserver>();

@@ -7,19 +7,16 @@ namespace Assets.CodeBase.Logic.Camera
     {
         public PlayerAttack _player;
         public GameObject _cameraCinemaVirtual;
-        private void Awake()
+        private void Start()
         {
             _player.OnAttack += OnActiveCamera;
             OffActiveCamera();
         }
 
-        //private void OnDisable()
-        //{
-        //    _player.OnAttack -= OnActiveCamera;
-        //}
+        private void OnDestroy() =>
+            _player.OnAttack -= OnActiveCamera;
         private void OnActiveCamera()
         {
-            Debug.Log("+");
             _cameraCinemaVirtual.SetActive(true);
         }
         private void OffActiveCamera() 

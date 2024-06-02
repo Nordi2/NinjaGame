@@ -1,5 +1,6 @@
 using Assets.CodeBase.Service;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.CodeBase.Logic.Player
 {
@@ -7,13 +8,18 @@ namespace Assets.CodeBase.Logic.Player
     {
         [SerializeField] private float _moveSpeed;
 
-        public InputService _inputService;//изменить 
+        public IInputService _inputService;//изменить 
         private CharacterController _characterController;
         private PlayerAnimation _animation;
 
         private float _verticalVelocity;
         private Vector3 _moveDirection;
         private bool _triggreCalled;
+        [Inject]
+        public void Construct(IInputService inputService)
+        {
+            _inputService = inputService;
+        }
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();

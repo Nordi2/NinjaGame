@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 
 namespace Assets.CodeBase.Service
 {
-    public class InputService : MonoBehaviour
+    public class InputService : MonoBehaviour , IInputService
     {
         public Vector2 _moveInput { get; private set; }
         public bool _attackClick { get; private set; }
