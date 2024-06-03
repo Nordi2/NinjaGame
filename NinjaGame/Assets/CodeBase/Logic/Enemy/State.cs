@@ -18,6 +18,7 @@ namespace Assets.CodeBase.Logic.Enemy
         }
         public virtual void Enter()
         {
+            _enemyBase.Animator.SetBool(_animBollName, true);
             _triggerCalled = false;
         }
         public virtual void Update()
@@ -26,7 +27,7 @@ namespace Assets.CodeBase.Logic.Enemy
         }
         public virtual void Exit()
         {
-
+            _enemyBase.Animator.SetBool(_animBollName, false);
         }
     }
 }
