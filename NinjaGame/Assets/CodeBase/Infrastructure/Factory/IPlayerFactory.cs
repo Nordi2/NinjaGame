@@ -4,6 +4,6 @@ namespace Assets.CodeBase.Infrastructure.Factory
 {
     public interface IPlayerFactory
     {
-        GameObject CreateHero(GameObject at);
+        GameObject CreateHero(Vector3 at);
     }
 }

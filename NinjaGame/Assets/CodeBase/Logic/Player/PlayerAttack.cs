@@ -29,9 +29,9 @@ namespace Assets.CodeBase.Logic.Player
             _triggerObserver.TriggerStay -= OnTriggerStay;
         private void OnTriggerStay(Collider obj)
         {
-            _animation.Attack(_inputService._attackClick);
+            _animation.Attack(_inputService.AttackClick);
             Vector3 offset = new Vector3(0, 0, -1);
-            if (_inputService._attackClick)
+            if (_inputService.AttackClick)
             {
                 transform.position = obj.GetComponentInParent<EnemyPosition>().transform.position + offset;
                 OnAttack?.Invoke();

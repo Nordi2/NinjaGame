@@ -9,9 +9,9 @@ public class PlayerFactory : IPlayerFactory
         _assets = assets;
     }
     private GameObject HeroGameObject { get; set; }
-    public GameObject CreateHero(GameObject at) 
+    public GameObject CreateHero(Vector3 at) 
     {
-        HeroGameObject = InstantiateRegistered(AssetPath.HeroPath, at.transform.position);
+        HeroGameObject = InstantiateRegistered(AssetPath.HeroPath, at);
         return HeroGameObject;
     }
 

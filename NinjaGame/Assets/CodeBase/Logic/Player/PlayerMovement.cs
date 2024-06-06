@@ -37,13 +37,15 @@ namespace Assets.CodeBase.Logic.Player
         {
             float xVelocity = Vector3.Dot(_moveDirection, transform.right);
             float zVelocity = Vector3.Dot(_moveDirection, transform.forward);
-
-            _animation.Move(xVelocity, zVelocity);
+            Debug.Log(xVelocity + " Xvelocity " + zVelocity + " Zvelocity ");
+            float clampXVelocity = Mathf.Clamp(xVelocity, -1, 1);
+            float clampZVelocity = Mathf.Clamp(zVelocity, -1, 1);
+            _animation.Move(clampXVelocity, clampZVelocity);
         }
 
         private void ApplyMovement()
         {
-            _moveDirection = new Vector3(_inputService._moveInput.x, 0, _inputService._moveInput.y);
+            _moveDirection = new Vector3(_inputService.MoveInput.x, 0, _inputService.MoveInput.y);
             ApplyGravity();
             _moveDirection.Normalize();
             if (_moveDirection.magnitude > 0)
